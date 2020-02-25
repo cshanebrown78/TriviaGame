@@ -4,6 +4,8 @@ var winCount = 0;
 var lossCount = 0;
 var noAnswerCount = 0;
 var questionGen = [0,1];
+var questionTimer = 30;
+var intervalId;
 // var qs = document.getElementById('question');
 // var aOne = document.getElementById("answer1");
 // var aTwo = document.getElementById("answer2");
@@ -59,9 +61,14 @@ $(".start").on("click", function(){
 });
 
 // Generates the questions and answers
-function randomQuestion() {  
+function randomQuestion() { 
+    $(".image-holder, .answer-message").empty();
+    $(".timer").html("<h2>Time Remaining:  30 seconds</h2>");
     var questionIndex = questionGen[Math.floor(Math.random() * questionGen.length)];  
     q = questionsAnswers[questionIndex];
+    clearInterval(intervalId);
+    questionTimer = 30;
+    intervalId = setInterval(decrement, 1000);
     // Stores the correct answer number to compare with button number later
     correctAnswer = q.answer;
     // console.log(correctAnswer);
@@ -72,17 +79,23 @@ function randomQuestion() {
     $(".answerTwo").text(q.aTwo);
     $(".answerThree").text(q.aThree);
     $(".answerFour").text(q.aFour);
-    questionGen.splice(questionIndex,1);
-    console.log(questionGen);
-    console.log(questionGen.length);
-
-
+    // $(".timer").html("<h2>" + questionTimer + "</h2");
+    questionGen.splice($.inArray(questionIndex,questionGen), 1);
+    
 };
+
+
+function decrement() {
+    questionTimer--;
+    // console.log(questionTimer);
+    $(".timer").html("<h2>Time Remaining:  " + questionTimer + " seconds</h2");
+};
+
 
 $(".answer").on("click", function() {
     // Assigns the value from the button choice
     userAnswer = $(this).attr("value");
-    console.log(userAnswer);
+    // console.log(userAnswer);
     // Displays the image from the movie for the correct answer
     
     
@@ -115,11 +128,12 @@ function rightWrong() {
 };
 
 function endGame() {
-    $(".question, .answer, .correct-answer, .image-holder, .times-up").empty();
-    $(".answer-message").text("That's All Folks. Here's how you did.")
+    clearInterval(intervalId);
+    $(".timer, .question, .answer, .correct-answer, .image-holder, .times-up").empty();
+    $(".answer-message").text("That's All Folks. Here's how you did.");
     $(".wins").text("Wins: " + winCount);
     $(".losses").text("losses: " + lossCount);
     var reStartBtn = $("<button>");
-    reStartBtn.text("Start");
+    reStartBtn.text("Play Again");
     $(".start-over").append(reStartBtn);
 }
