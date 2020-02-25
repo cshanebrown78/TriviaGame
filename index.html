@@ -5,20 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia Game</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
     <div class = container>
         <h1>80's Movie Trivia</h1>
 
-        <h2>Time Remaining: <span class = "timer"></span></h2> 
+        <h2 class = "timer"></h2>
+        <div class = "start"></div> 
         <div class = "questions-answers">
             <h2 class = "question"></h2>
-            <h2 class = "answer1"></h2>
-            <h2 class = "answer2"></h2>
-            <h2 class = "answer3"></h2>
-            <h2 class = "answer4"></h2>
+            <h3 class = "answerOne answer" value = "1"></h3>
+            <h3 class = "answerTwo answer" value = "2"></h3>
+            <h3 class = "answerThree answer" value = "3"></h3>
+            <h3 class = "answerFour answer" value = "4"></h3>
+            <div class = "answer-message"></div>
             <div class = "correct-answer"></div>
+            <div class = "image-holder"></div>
             <div class = "times-up"></div>
+            <div class = "results"></div>
         
         </div>
 

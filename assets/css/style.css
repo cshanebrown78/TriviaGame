@@ -1,0 +1,7 @@
+h3 {
+    cursor: pointer;
+}
+
+h3:hover {
+    background-color: #5091e7;
+}
