@@ -7,7 +7,7 @@ var questionGen = [0,1];
 var questionTimer = 30;
 var intervalId;
 var delay;
-var delay1;
+// var delay1;
 // var qs = document.getElementById('question');
 // var aOne = document.getElementById("answer1");
 // var aTwo = document.getElementById("answer2");
@@ -30,7 +30,7 @@ var questionsAnswers = [{
         visual: "assets/images/thelostboys.jpg",
     },
     {
-        question: "In this movie a young hotshot pilot must break all the rules to save his dad.",
+        question: "In this movie a young hot shot pilot must break all the rules to save his dad.",
         aOne: "Top Gun",
         aTwo: "Iron Eagle",
         aThree: "Flight of the Intruder",
@@ -69,26 +69,23 @@ function randomQuestion() {
     var questionIndex = questionGen[Math.floor(Math.random() * questionGen.length)];  
     q = questionsAnswers[questionIndex];
     clearInterval(intervalId);
-    questionTimer = 30;
+    // questionTimer = 30;
     intervalId = setInterval(decrement, 1000);
+    questionTimer = 30;
     // Stores the correct answer number to compare with button number later
     correctAnswer = q.answer;
     // console.log(correctAnswer);
     // console.log(q.answer);
     // Prints the Question and Answers to the webpage
-    $(".question").text(q.question);
+        $(".question").text(q.question);
     $(".answerOne").text(q.aOne);
     $(".answerTwo").text(q.aTwo);
     $(".answerThree").text(q.aThree);
     $(".answerFour").text(q.aFour);
     // $(".timer").html("<h2>" + questionTimer + "</h2");
     questionGen.splice($.inArray(questionIndex,questionGen), 1);
-    if (questionTimer === 0) {
-        $(".answer").empty();
-        $(".answer-message").text("Times Up!");
-        $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
-    }
     
+        
 };
 
 
@@ -96,7 +93,23 @@ function decrement() {
     questionTimer--;
     // console.log(questionTimer);
     $(".timer").html("<h2>Time Remaining:  " + questionTimer + " seconds</h2");
+    if (questionTimer === 0) {
+        timerStop();
+        $(".answer").empty();
+        $(".answer-message").text("Times Up!");
+        $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
+        noAnswerCount++
+        if(questionGen.length > 0) {
+            delay = setTimeout(randomQuestion, 3500);
+        } else {
+            delay = setTimeout(endGame, 3500);
+        };
+    };    
 };
+
+function timerStop() {
+    clearInterval(intervalId);
+}
 
 
 $(".answer").on("click", function() {
@@ -117,12 +130,14 @@ function rightWrong() {
         // console.log("This worked");
         $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
         winCount++;
+        timerStop();
     } else {
         $(".answer-message").text("Bogus!");
         $(".answer").empty();
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
         $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
         lossCount++;
+        timerStop();
     }
 
     if(questionGen.length > 0) {
@@ -141,7 +156,8 @@ function endGame() {
     $(".timer, .question, .answer, .correct-answer, .image-holder, .times-up").empty();
     $(".answer-message").text("That's All Folks. Here's how you did.");
     $(".wins").text("Wins: " + winCount);
-    $(".losses").text("losses: " + lossCount);
+    $(".losses").text("Losses: " + lossCount);
+    $(".no-answer").text("Did not answer: " + noAnswerCount)
     var reStartBtn = $("<button>");
     reStartBtn.text("Play Again");
     $(".start-over").append(reStartBtn);
