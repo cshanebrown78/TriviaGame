@@ -6,6 +6,8 @@ var noAnswerCount = 0;
 var questionGen = [0,1];
 var questionTimer = 30;
 var intervalId;
+var delay;
+var delay1;
 // var qs = document.getElementById('question');
 // var aOne = document.getElementById("answer1");
 // var aTwo = document.getElementById("answer2");
@@ -81,6 +83,11 @@ function randomQuestion() {
     $(".answerFour").text(q.aFour);
     // $(".timer").html("<h2>" + questionTimer + "</h2");
     questionGen.splice($.inArray(questionIndex,questionGen), 1);
+    if (questionTimer === 0) {
+        $(".answer").empty();
+        $(".answer-message").text("Times Up!");
+        $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
+    }
     
 };
 
@@ -106,7 +113,7 @@ $(".answer").on("click", function() {
 function rightWrong() {    
     if (correctAnswer === userAnswer) {
         $(".answer").empty();
-        $(".answer-message").text("Totally Awesome!")
+        $(".answer-message").text("Totally Awesome!");
         // console.log("This worked");
         $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
         winCount++;
@@ -119,9 +126,11 @@ function rightWrong() {
     }
 
     if(questionGen.length > 0) {
-        randomQuestion();
+        delay = setTimeout(randomQuestion, 3500);
     } else {
-        endGame();
+        delay = setTimeout(endGame, 3500);
+        
+        
     }
        
 
