@@ -64,25 +64,26 @@ $(".start").on("click", function(){
 
 // Generates the questions and answers
 function randomQuestion() { 
-    $(".image-holder, .answer-message").empty();
+    $(".image-holder, .answer-message, .correct-answer").empty();
     $(".timer").html("<h2>Time Remaining:  30 seconds</h2>");
     var questionIndex = questionGen[Math.floor(Math.random() * questionGen.length)];  
     q = questionsAnswers[questionIndex];
+    // Starts the timer
     clearInterval(intervalId);
-    // questionTimer = 30;
     intervalId = setInterval(decrement, 1000);
     questionTimer = 30;
     // Stores the correct answer number to compare with button number later
     correctAnswer = q.answer;
     // console.log(correctAnswer);
     // console.log(q.answer);
+
     // Prints the Question and Answers to the webpage
-        $(".question").text(q.question);
+    $(".question").text(q.question);
     $(".answerOne").text(q.aOne);
     $(".answerTwo").text(q.aTwo);
     $(".answerThree").text(q.aThree);
     $(".answerFour").text(q.aFour);
-    // $(".timer").html("<h2>" + questionTimer + "</h2");
+    
     questionGen.splice($.inArray(questionIndex,questionGen), 1);
     
         
@@ -97,27 +98,27 @@ function decrement() {
         timerStop();
         $(".answer").empty();
         $(".answer-message").text("Times Up!");
+        $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
         $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
         noAnswerCount++
         if(questionGen.length > 0) {
-            delay = setTimeout(randomQuestion, 3500);
+            delay = setTimeout(randomQuestion, 3000);
         } else {
-            delay = setTimeout(endGame, 3500);
+            delay = setTimeout(endGame, 3000);
         };
     };    
 };
 
+// clears the timer
 function timerStop() {
     clearInterval(intervalId);
-}
+};
 
 
 $(".answer").on("click", function() {
     // Assigns the value from the button choice
     userAnswer = $(this).attr("value");
     // console.log(userAnswer);
-    // Displays the image from the movie for the correct answer
-    
     
     rightWrong();
 });
@@ -128,6 +129,8 @@ function rightWrong() {
         $(".answer").empty();
         $(".answer-message").text("Totally Awesome!");
         // console.log("This worked");
+
+        // Displays the image from the movie for the correct answer
         $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
         winCount++;
         timerStop();
@@ -138,15 +141,14 @@ function rightWrong() {
         $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
         lossCount++;
         timerStop();
-    }
+    };
 
     if(questionGen.length > 0) {
-        delay = setTimeout(randomQuestion, 3500);
+        delay = setTimeout(randomQuestion, 3000);
     } else {
-        delay = setTimeout(endGame, 3500);
-        
-        
-    }
+        delay = setTimeout(endGame, 3000);
+
+    };
        
 
 };
@@ -158,7 +160,20 @@ function endGame() {
     $(".wins").text("Wins: " + winCount);
     $(".losses").text("Losses: " + lossCount);
     $(".no-answer").text("Did not answer: " + noAnswerCount);
-    var reStartBtn = $("<button>");
-    reStartBtn.text("Play Again");
-    $(".start-over").append(reStartBtn);
-}
+    $(".start-over").text("Play Again?");
+};
+
+// resets and restarts game if "Play Again?" is checked
+$(".start-over").on("click", function() {
+    winCount = 0;
+    lossCount = 0;
+    noAnswerCount = 0;
+    questionGen = [0,1];
+    questionTimer = 30;
+    correctAnswer = "";
+    userAnswer = "";
+    q = "";
+    $(".wins, .losses, .no-answer, .start-over").empty();
+    randomQuestion();
+
+})
