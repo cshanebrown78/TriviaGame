@@ -157,7 +157,7 @@ function endGame() {
     $(".answer-message").text("That's All Folks. Here's how you did.");
     $(".wins").text("Wins: " + winCount);
     $(".losses").text("Losses: " + lossCount);
-    $(".no-answer").text("Did not answer: " + noAnswerCount)
+    $(".no-answer").text("Did not answer: " + noAnswerCount);
     var reStartBtn = $("<button>");
     reStartBtn.text("Play Again");
     $(".start-over").append(reStartBtn);
