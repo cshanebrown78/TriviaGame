@@ -1,7 +1,44 @@
+* {
+    box-sizing: border-box;
+    
+}
+
+html, body {
+    height: 100%;
+    background-image: url("../images/background.png")
+}
+
+.container {
+    max-width: 960px;
+    height: 100%;
+    margin: 20px auto 5px auto;
+    text-align: center;
+    background: rgb(211, 208, 208);
+    overflow: overlay;
+    
+}
+
+
 h3 {
     cursor: pointer;
 }
 
-h3:hover {
+.answer:hover {
     background-color: #5091e7;
+}
+
+/* Google fonts */
+h1 {
+    text-shadow: 0 0 25px #FF0000;
+    font-weight: 400;
+    font-size: 80px;
+    font-family: 'Monoton';
+    color: rgb(243, 39, 39);
+    margin-block-start: 0.27em;
+    margin-block-end: 0.27em;
+}
+
+h3 {
+    margin: 0px 29% 0px 29%;
+    padding: 10px;
 }

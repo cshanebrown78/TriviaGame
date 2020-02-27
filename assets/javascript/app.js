@@ -99,7 +99,7 @@ function decrement() {
         $(".answer").empty();
         $(".answer-message").text("Times Up!");
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
-        $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
+        $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
         noAnswerCount++
         if(questionGen.length > 0) {
             delay = setTimeout(randomQuestion, 3000);
@@ -131,14 +131,14 @@ function rightWrong() {
         // console.log("This worked");
 
         // Displays the image from the movie for the correct answer
-        $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
+        $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
         winCount++;
         timerStop();
     } else {
-        $(".answer-message").text("Bogus!");
         $(".answer").empty();
+        $(".answer-message").text("Bogus!");
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
-        $(".image-holder").html("<img src=" + q.visual + " width = '250px'>");
+        $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
         lossCount++;
         timerStop();
     };
