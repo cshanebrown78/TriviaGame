@@ -96,7 +96,7 @@ function decrement() {
     $(".timer").html("<h2>Time Remaining:  " + questionTimer + " seconds</h2");
     if (questionTimer === 0) {
         timerStop();
-        $(".answer").empty();
+        $(".answer, .question").empty();
         $(".answer-message").text("Times Up!");
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
         $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
@@ -126,7 +126,7 @@ $(".answer").on("click", function() {
 // Determines if user chose the correct answer    
 function rightWrong() {    
     if (correctAnswer === userAnswer) {
-        $(".answer").empty();
+        $(".answer, .question").empty();
         
         $(".answer-message").text("Totally Awesome!");
         // console.log("This worked");
@@ -136,7 +136,7 @@ function rightWrong() {
         winCount++;
         timerStop();
     } else {
-        $(".answer").empty();
+        $(".answer, .question").empty();
         $(".answer-message").text("Bogus!");
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
         $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
@@ -159,8 +159,8 @@ function endGame() {
     $(".timer, .question, .answer, .correct-answer, .image-holder, .times-up, .answer-message").empty();
     $(".gameover").text("That's All Folks.")
     $(".final-message").text("Here's how you did.");
-    $(".wins").text("Wins: " + winCount);
-    $(".losses").text("Losses: " + lossCount);
+    $(".wins").text("Correct: " + winCount);
+    $(".losses").text("Incorrect: " + lossCount);
     $(".no-answer").text("Did not answer: " + noAnswerCount);
     $(".start-over").text("Play Again?");
 };
@@ -175,7 +175,7 @@ $(".start-over").on("click", function() {
     correctAnswer = "";
     userAnswer = "";
     q = "";
-    $(".wins, .losses, .no-answer, .start-over").empty();
+    $(".wins, .losses, .no-answer, .start-over, .gameover, .final-message").empty();
     randomQuestion();
 
 });

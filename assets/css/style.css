@@ -5,7 +5,12 @@
 
 html, body {
     height: 100%;
-    background-image: url("../images/background.png")
+    background-image: url("../images/background.png");
+    /* overflow: overlay; */
+}
+
+body {
+    overflow: overlay;
 }
 
 .container {
@@ -14,7 +19,7 @@ html, body {
     margin: 20px auto 5px auto;
     text-align: center;
     background: rgb(211, 208, 208);
-    overflow: overlay;
+    overflow: hidden;
     
 }
 
@@ -24,6 +29,7 @@ h3 {
 
 h3:hover {
     background-color: #5091e7;
+    border: 2px solid red;
 }
 
 /* Google fonts */
