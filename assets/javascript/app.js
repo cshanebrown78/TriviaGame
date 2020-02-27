@@ -34,11 +34,92 @@ var questionsAnswers = [{
         aOne: "Top Gun",
         aTwo: "Iron Eagle",
         aThree: "Flight of the Intruder",
-        aFour: "Captain Silly pants",
+        aFour: "Colonel Silly pants",
         answer: "2",
         correctAnswer: "Iron Eagle",
         visual: "assets/images/ironeagle.jpg",
-    }];
+    },
+    {
+        question: "You might find yourself travelling at ludicrous speed in this parody movie:",
+        aOne: "Star Wars: The Return of the Jedi",
+        aTwo: "Space Invaders",
+        aThree: "Asteroids",
+        aFour: "Spaceballs",
+        answer: "4",
+        correctAnswer: "Spaceballs",
+        visual: "assets/images/spaceballs.jpg",
+    },
+    {
+        question: "This movie is spent trying to give BMX racer Cru a chance to race Hell Track:",
+        aOne: "BMX Bandits",
+        aTwo: "Quicksilver",
+        aThree: "Rad",
+        aFour: "Hot Dog",
+        answer: "3",
+        correctAnswer: "Rad",
+        visual: "assets/images/rad.jpg",
+    },
+    {
+        question: "If Heman gets the Power Sword, he has the Power of Grayskull in this movie:",
+        aOne: "Captain Sparkle Fingers",
+        aTwo: "Masters of the Universe",
+        aThree: "Conan the Barbarian",
+        aFour: "Zelda",
+        answer: "2",
+        correctAnswer: "Masters of the Universe",
+        visual: "assets/images/heman.jpg",
+    },
+    {
+        question: "In this movie the story goes on and on and on and on:",
+        aOne: "Titanic",
+        aTwo: "Fast Times at Ridgemont High",
+        aThree: "The Princess Brid",
+        aFour: "The NeverEnding Story",
+        answer: "4",
+        correctAnswer: "The NeverEnding Story",
+        visual: "assets/images/nestory.jpg",
+    },
+    {
+        question: "If you are lucky you'll find the pirate One Eyed Willy's Treasure in this movie:",
+        aOne: "Goonies",
+        aTwo: "Space Pirates",
+        aThree: "Ice Pirates",
+        aFour: "Pirate Movie",
+        answer: "1",
+        correctAnswer: "Goonies",
+        visual: "assets/images/goonies.jpg",
+    },
+    {
+        question: "This movie is about 2 young men who create a woman and the journey begins:",
+        aOne: "Bride of Frankenstein",
+        aTwo: "Weird Science",
+        aThree: "The Adventures of Burt and Ernie",
+        aFour: "My Science Project",
+        answer: "2",
+        correctAnswer: "Weird Science",
+        visual: "assets/images/weirdscience.jpg",
+    },
+    {
+        question: "This time travelling classic features 2 students travelling through history:",
+        aOne: "Back to the Future",
+        aTwo: "Hot Tub Time Machine",
+        aThree: "Time Machine",
+        aFour: "Bill and Ted's Excellent Adventure",
+        answer: "4",
+        correctAnswer: "Bill and Ted's Excellent Adventure",
+        visual: "assets/images/bandt.jpg",
+    },
+    {
+        question: "Don't get them wet and especially don't feed them after midnight:",
+        aOne: "Munchkins",
+        aTwo: "Caddyshack",
+        aThree: "Gremlins",
+        aFour: "Little Women",
+        answer: "3",
+        correctAnswer: "Gremlins",
+        visual: "assets/images/gremlins.jpg",
+    },
+];
 
 
 $(document).ready(function() {
@@ -64,7 +145,7 @@ $(".start").on("click", function(){
 
 // Generates the questions and answers
 function randomQuestion() { 
-    $(".image-holder, .answer-message, .correct-answer").empty();
+    $(".question, .answer, .answer-message, .correct-answer, .image-holder, .times-up, .gameover, .final-message, .wins, .losses, .no-answer, .start-over").empty();
     $(".timer").html("<h2>Time Remaining:  30 seconds</h2>");
     var questionIndex = questionGen[Math.floor(Math.random() * questionGen.length)];  
     q = questionsAnswers[questionIndex];
@@ -96,7 +177,7 @@ function decrement() {
     $(".timer").html("<h2>Time Remaining:  " + questionTimer + " seconds</h2");
     if (questionTimer === 0) {
         timerStop();
-        $(".answer, .question").empty();
+        $(".question, .answer").empty();
         $(".answer-message").text("Times Up!");
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
         $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
@@ -126,7 +207,7 @@ $(".answer").on("click", function() {
 // Determines if user chose the correct answer    
 function rightWrong() {    
     if (correctAnswer === userAnswer) {
-        $(".answer, .question").empty();
+        $(".question, .answer").empty();
         
         $(".answer-message").text("Totally Awesome!");
         // console.log("This worked");
@@ -136,7 +217,7 @@ function rightWrong() {
         winCount++;
         timerStop();
     } else {
-        $(".answer, .question").empty();
+        $(".question, .answer").empty();
         $(".answer-message").text("Bogus!");
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
         $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
@@ -156,8 +237,8 @@ function rightWrong() {
 
 function endGame() {
     clearInterval(intervalId);
-    $(".timer, .question, .answer, .correct-answer, .image-holder, .times-up, .answer-message").empty();
-    $(".gameover").text("That's All Folks.")
+    $(".timer, .question, .answer, .answer-message, .correct-answer, .image-holder, .times-up").empty();
+    $(".gameover").text("That's All Folks.");
     $(".final-message").text("Here's how you did.");
     $(".wins").text("Correct: " + winCount);
     $(".losses").text("Incorrect: " + lossCount);
@@ -175,7 +256,7 @@ $(".start-over").on("click", function() {
     correctAnswer = "";
     userAnswer = "";
     q = "";
-    $(".wins, .losses, .no-answer, .start-over, .gameover, .final-message").empty();
+    $(".gameover, .final-message, .wins, .losses, .no-answer, .start-over").empty();
     randomQuestion();
 
 });

@@ -6,7 +6,7 @@
 html, body {
     height: 100%;
     background-image: url("../images/background.png");
-    /* overflow: overlay; */
+    
 }
 
 body {
@@ -84,4 +84,8 @@ button {
 .gameover, .final-message, .start-over {
     font-size: 32px;
     font-weight: 700;
+}
+
+.image-holder {
+    margin-bottom: 5px;
 }
