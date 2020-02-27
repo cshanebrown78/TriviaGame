@@ -20,7 +20,7 @@ var q = "";
 
 var questionsAnswers = [{
     
-        question: "This movie was about vampires in Santa Cruz and featured the famous Corey duo.",
+        question: "This movie was about vampires in Santa Cruz and featured the famous Corey duo:",
         aOne: "The Lost Boys",
         aTwo: "Monster Squad",
         aThree: "Thrasher",
@@ -30,7 +30,7 @@ var questionsAnswers = [{
         visual: "assets/images/thelostboys.jpg",
     },
     {
-        question: "In this movie a young hot shot pilot must break all the rules to save his dad.",
+        question: "In this movie a young hot shot pilot must break all the rules to save his dad:",
         aOne: "Top Gun",
         aTwo: "Iron Eagle",
         aThree: "Flight of the Intruder",
@@ -127,6 +127,7 @@ $(".answer").on("click", function() {
 function rightWrong() {    
     if (correctAnswer === userAnswer) {
         $(".answer").empty();
+        
         $(".answer-message").text("Totally Awesome!");
         // console.log("This worked");
 
@@ -155,8 +156,9 @@ function rightWrong() {
 
 function endGame() {
     clearInterval(intervalId);
-    $(".timer, .question, .answer, .correct-answer, .image-holder, .times-up").empty();
-    $(".answer-message").text("That's All Folks. Here's how you did.");
+    $(".timer, .question, .answer, .correct-answer, .image-holder, .times-up, .answer-message").empty();
+    $(".gameover").text("That's All Folks.")
+    $(".final-message").text("Here's how you did.");
     $(".wins").text("Wins: " + winCount);
     $(".losses").text("Losses: " + lossCount);
     $(".no-answer").text("Did not answer: " + noAnswerCount);
@@ -176,4 +178,4 @@ $(".start-over").on("click", function() {
     $(".wins, .losses, .no-answer, .start-over").empty();
     randomQuestion();
 
-})
+});
