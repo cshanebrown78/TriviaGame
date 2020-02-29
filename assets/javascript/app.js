@@ -3,21 +3,15 @@
 var winCount = 0;
 var lossCount = 0;
 var noAnswerCount = 0;
-var questionGen = [0,1];
+var questionGen = [0,1,2,3,4,5,6,7,8,9];
 var questionTimer = 30;
 var intervalId;
 var delay;
-// var delay1;
-// var qs = document.getElementById('question');
-// var aOne = document.getElementById("answer1");
-// var aTwo = document.getElementById("answer2");
-// var aThree = document.getElementById("answer3");
-// var aFour = document.getElementById("answer4");
 var correctAnswer = "";
 var userAnswer = "";
 var q = "";
 
-
+// Object holding the questions and answers
 var questionsAnswers = [{
     
         question: "This movie was about vampires in Santa Cruz and featured the famous Corey duo:",
@@ -155,9 +149,7 @@ function randomQuestion() {
     questionTimer = 30;
     // Stores the correct answer number to compare with button number later
     correctAnswer = q.answer;
-    // console.log(correctAnswer);
-    // console.log(q.answer);
-
+    
     // Prints the Question and Answers to the webpage
     $(".question").text(q.question);
     $(".answerOne").text(q.aOne);
@@ -165,22 +157,23 @@ function randomQuestion() {
     $(".answerThree").text(q.aThree);
     $(".answerFour").text(q.aFour);
     
+    // Removes the question from the array so that it isn't repeated
     questionGen.splice($.inArray(questionIndex,questionGen), 1);
     
         
 };
 
-
+// Handles the timer
 function decrement() {
     questionTimer--;
-    // console.log(questionTimer);
     $(".timer").html("<h2>Time Remaining:  " + questionTimer + " seconds</h2");
+    // Handles the times up aspect
     if (questionTimer === 0) {
         timerStop();
         $(".question, .answer").empty();
         $(".answer-message").text("Times Up!");
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
-        $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
+        $(".image-holder").html("<img src=" + q.visual + " width = '200px', height = '200px'>");
         noAnswerCount++
         if(questionGen.length > 0) {
             delay = setTimeout(randomQuestion, 3000);
@@ -199,8 +192,7 @@ function timerStop() {
 $(".answer").on("click", function() {
     // Assigns the value from the button choice
     userAnswer = $(this).attr("value");
-    // console.log(userAnswer);
-    
+        
     rightWrong();
 });
 
@@ -208,23 +200,22 @@ $(".answer").on("click", function() {
 function rightWrong() {    
     if (correctAnswer === userAnswer) {
         $(".question, .answer").empty();
-        
         $(".answer-message").text("Totally Awesome!");
-        // console.log("This worked");
-
+        
         // Displays the image from the movie for the correct answer
-        $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
+        $(".image-holder").html("<img src=" + q.visual + " width = '200px', height = '200px'>");
         winCount++;
         timerStop();
     } else {
         $(".question, .answer").empty();
         $(".answer-message").text("Bogus!");
         $(".correct-answer").text("You should have chosen: " + q.correctAnswer);
-        $(".image-holder").html("<img src=" + q.visual + " width = '250px', height = '250px'>");
+        $(".image-holder").html("<img src=" + q.visual + " width = '200px', height = '200px'>");
         lossCount++;
         timerStop();
     };
 
+    // Part of making the timer function
     if(questionGen.length > 0) {
         delay = setTimeout(randomQuestion, 3000);
     } else {
@@ -235,6 +226,7 @@ function rightWrong() {
 
 };
 
+// Tallies and displays the final score
 function endGame() {
     clearInterval(intervalId);
     $(".timer, .question, .answer, .answer-message, .correct-answer, .image-holder, .times-up").empty();
@@ -251,7 +243,7 @@ $(".start-over").on("click", function() {
     winCount = 0;
     lossCount = 0;
     noAnswerCount = 0;
-    questionGen = [0,1];
+    questionGen = [0,1,2,3,4,5,6,7,8,9];
     questionTimer = 30;
     correctAnswer = "";
     userAnswer = "";

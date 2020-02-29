@@ -6,11 +6,12 @@
 html, body {
     height: 100%;
     background-image: url("../images/background.png");
-    
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
-    overflow: overlay;
+    overflow: hidden;
 }
 
 .container {
@@ -19,7 +20,7 @@ body {
     margin: 20px auto 5px auto;
     text-align: center;
     background: rgb(211, 208, 208);
-    overflow: hidden;
+    overflow: auto;
     
 }
 
@@ -30,6 +31,7 @@ h3 {
 h3:hover {
     background-color: #5091e7;
     border: 2px solid red;
+    border-radius: 10px;
 }
 
 /* Google fonts */
@@ -81,9 +83,15 @@ button {
     font-weight: 600;
 }
 
-.gameover, .final-message, .start-over {
+.final-message, .start-over {
     font-size: 32px;
     font-weight: 700;
+}
+
+.gameover {
+    font-size: 40px;
+    font-weight: 700;
+    font-family: cursive;
 }
 
 .image-holder {
