@@ -21,7 +21,7 @@ var questionsAnswers = [{
         aFour: "Interview with a Vampire",
         answer: "1",
         correctAnswer: "The Lost Boys",
-        visual: "assets/images/thelostboys.jpg",
+        visual: "assets/images/thelostboys.jpg alt=The Lost Boys",
     },
     {
         question: "In this movie a young hot shot pilot must break all the rules to save his dad:",
@@ -31,7 +31,7 @@ var questionsAnswers = [{
         aFour: "Colonel Silly pants",
         answer: "2",
         correctAnswer: "Iron Eagle",
-        visual: "assets/images/ironeagle.jpg",
+        visual: "assets/images/ironeagle.jpg alt=Iron Eagle",
     },
     {
         question: "You might find yourself travelling at ludicrous speed in this parody movie:",
@@ -41,7 +41,7 @@ var questionsAnswers = [{
         aFour: "Spaceballs",
         answer: "4",
         correctAnswer: "Spaceballs",
-        visual: "assets/images/spaceballs.jpg",
+        visual: "assets/images/spaceballs.jpg alt=Spaceballs",
     },
     {
         question: "This movie is spent trying to give BMX racer Cru a chance to race Hell Track:",
@@ -51,7 +51,7 @@ var questionsAnswers = [{
         aFour: "Hot Dog",
         answer: "3",
         correctAnswer: "Rad",
-        visual: "assets/images/rad.jpg",
+        visual: "assets/images/rad.jpg alt=Rad",
     },
     {
         question: "If Heman gets the Power Sword, he has the Power of Grayskull in this movie:",
@@ -61,7 +61,7 @@ var questionsAnswers = [{
         aFour: "Zelda",
         answer: "2",
         correctAnswer: "Masters of the Universe",
-        visual: "assets/images/heman.jpg",
+        visual: "assets/images/heman.jpg alt=Masters of the Universe",
     },
     {
         question: "In this movie the story goes on and on and on and on:",
@@ -71,7 +71,7 @@ var questionsAnswers = [{
         aFour: "The NeverEnding Story",
         answer: "4",
         correctAnswer: "The NeverEnding Story",
-        visual: "assets/images/nestory.jpg",
+        visual: "assets/images/nestory.jpg alt=The NeverEnding Story",
     },
     {
         question: "If you are lucky you'll find the pirate One Eyed Willy's Treasure in this movie:",
@@ -81,7 +81,7 @@ var questionsAnswers = [{
         aFour: "Pirate Movie",
         answer: "1",
         correctAnswer: "Goonies",
-        visual: "assets/images/goonies.jpg",
+        visual: "assets/images/goonies.jpg alt=Goonies",
     },
     {
         question: "This movie is about 2 young men who create a woman and the journey begins:",
@@ -91,7 +91,7 @@ var questionsAnswers = [{
         aFour: "My Science Project",
         answer: "2",
         correctAnswer: "Weird Science",
-        visual: "assets/images/weirdscience.jpg",
+        visual: "assets/images/weirdscience.jpg alt=Weird Science",
     },
     {
         question: "This time travelling classic features 2 students travelling through history:",
@@ -101,7 +101,7 @@ var questionsAnswers = [{
         aFour: "Bill and Ted's Excellent Adventure",
         answer: "4",
         correctAnswer: "Bill and Ted's Excellent Adventure",
-        visual: "assets/images/bandt.jpg",
+        visual: "assets/images/bandt.jpg alt=Bill and Ted's Excellent Adventure",
     },
     {
         question: "Don't get them wet and especially don't feed them after midnight:",
@@ -111,7 +111,7 @@ var questionsAnswers = [{
         aFour: "Little Women",
         answer: "3",
         correctAnswer: "Gremlins",
-        visual: "assets/images/gremlins.jpg",
+        visual: "assets/images/gremlins.jpg alt=Gremlins",
     },
 ];
 
