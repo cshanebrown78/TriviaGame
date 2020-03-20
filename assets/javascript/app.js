@@ -67,7 +67,7 @@ var questionsAnswers = [{
         question: "In this movie the story goes on and on and on and on:",
         aOne: "Titanic",
         aTwo: "Fast Times at Ridgemont High",
-        aThree: "The Princess Brid",
+        aThree: "The Princess Bride",
         aFour: "The NeverEnding Story",
         answer: "4",
         correctAnswer: "The NeverEnding Story",
